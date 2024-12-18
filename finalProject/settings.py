@@ -13,16 +13,21 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 from datetime import timedelta
 import os
+from dotenv import load_dotenv
+
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+SECRET_KEY = os.environ.get("SECRET_KEY")
+GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-zcmszz0!%3*m)vewl8p#&pu6c^1$=x(xu7%f*_*86lb+m0m(82'
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True####################################################################################make false to host to aws
@@ -128,7 +133,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-GOOGLE_API_KEY = os.environ.get('GOOGLE_MAPS_API')
+#GOOGLE_API_KEY = os.environ.get('GOOGLE_MAPS_API')
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
@@ -175,3 +180,9 @@ STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')'''
+
+ALLOWED_HOSTS = [
+    'volunteerapi.onrender.com',
+    'localhost',
+    '127.0.0.1',
+]
