@@ -53,11 +53,11 @@ INSTALLED_APPS = [
     'service',
     'rest_framework.authtoken',
     'drf_spectacular',
-     "corsheaders",
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
-     "corsheaders.middleware.CorsMiddleware",# required for deployment
+    "corsheaders.middleware.CorsMiddleware",# required for deployment
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -198,6 +198,6 @@ ALLOWED_HOSTS = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",# Your React app
-    "https://volunteerapi.onrender.com",  #for deployment
+    "http://localhost:5173",# Your React appv
+    "https://volunteerapi.onrender.com",  #for deploymentt
 ]
