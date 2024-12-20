@@ -14,6 +14,10 @@ from pathlib import Path
 from datetime import timedelta
 import os
 
+
+
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -22,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-zcmszz0!%3*m)vewl8p#&pu6c^1$=x(xu7%f*_*86lb+m0m(82'
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True####################################################################################make false to host to aws
@@ -43,9 +47,11 @@ INSTALLED_APPS = [
     'service',
     'rest_framework.authtoken',
     'drf_spectacular',
+     "corsheaders",
 ]
 
 MIDDLEWARE = [
+     "corsheaders.middleware.CorsMiddleware",# required for deployment
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -53,6 +59,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
+    
 ]
 
 ROOT_URLCONF = 'finalProject.urls'
@@ -128,7 +136,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-GOOGLE_API_KEY = os.environ.get('GOOGLE_MAPS_API')
+#GOOGLE_API_KEY = os.environ.get('GOOGLE_MAPS_API')
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
@@ -175,3 +183,13 @@ STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')'''
+
+ALLOWED_HOSTS = [
+    'volunteerapi.onrender.com',
+    'localhost',
+    '127.0.0.1',
+]
+
+CORS_ALLOWED_ORIGINS = [
+    "https://volunteerapi.onrender.com/api/",  # Add your frontend's URL
+]
