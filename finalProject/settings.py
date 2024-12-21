@@ -54,11 +54,10 @@ INSTALLED_APPS = [
     'service',
     'rest_framework.authtoken',
     'drf_spectacular',
-    'corsheaders',
+    
 ]
 
 MIDDLEWARE = [
-    "corsheaders.middleware.CorsMiddleware",# required for deployment
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -180,25 +179,11 @@ SIMPLE_JWT = {
  #needed to override default user model and use a custom user model
 AUTH_USER_MODEL = "service.CustomUser"
 
-'''AWS_ACCESS_KEY_ID = '<your-aws-access-key>'
-AWS_SECRET_ACCESS_KEY = '<your-aws-secret-key>'
-AWS_STORAGE_BUCKET_NAME = '<your-s3-bucket-name>'
-AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
-STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'
-MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media/'
 
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')'''
 
 ALLOWED_HOSTS = [
-    'volunteerapi.onrender.com',
+    'hostURL',
     'localhost',
     '127.0.0.1',
 ]
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",# Your React appv
-    "https://volunteerapi.onrender.com",  #for deploymentt
-]
