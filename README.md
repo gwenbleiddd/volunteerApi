@@ -207,7 +207,7 @@ This separation improves scalability and maintainability.
 
 ## 📄 License
 
-This project is developed for academic purposes as part of **ITEC443**.
+This project is developed for academic purposes as part of **ITEC 443**.
 
 ---
 
